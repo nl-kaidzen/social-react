@@ -1,0 +1,26 @@
+@import './../global/variables.scss';
+
+.navbar {
+    grid-area: nav;
+    background-color: $grey-dark;
+}
+
+.list {
+    padding: 0;
+    list-style: none;
+}
+
+.button {
+    padding: 10px 10px;
+    border: none;
+    background-color: $grey-dark;
+    width: 100%;
+    cursor: pointer;
+    color: $grey;
+
+    &:hover,
+    &:focus {
+        background-color: $cyan;
+        color: $white;
+    }
+}

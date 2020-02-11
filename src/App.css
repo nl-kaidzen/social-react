@@ -11,38 +11,6 @@
   grid-template-columns: 2fr 10fr;
 }
 
-.header {
-  grid-area: header;
-  background-color: lightgreen;
-}
-
-.header img {
-  height: 60px;
-  width: 60px
-}
-
-.nav {
-  grid-area: nav;
-  background-color: cornflowerblue;
-}
-
-.nav ul {
-  padding: 0;
-  list-style: none;
-}
-
-.nav ul li button {
-  padding: 10px 10px;
-  border: none;
-  background-color: cornflowerblue;
-  width: 100%;
-  cursor: pointer;
-}
-
-.nav ul li button:hover {
-  background-color: blueviolet;
-}
-
 .main-content {
   grid-area: main;
   display: flex;

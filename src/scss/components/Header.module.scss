@@ -1,0 +1,11 @@
+@import './../global/variables.scss';
+
+.header {
+    grid-area: header;
+    background-color: $grey-dark;
+}
+
+.logo {
+    height: 60px;
+    width: 60px
+}
