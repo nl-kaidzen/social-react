@@ -1,8 +1,8 @@
 @import './../../scss/global/variables.scss';
 
 .navbar {
-    grid-area: nav;
     background-color: $grey-dark;
+    grid-area: nav;
 }
 
 .list {
@@ -11,14 +11,18 @@
 }
 
 .button {
-    padding: 10px 10px;
-    border: none;
     background-color: $grey-dark;
-    width: 100%;
-    cursor: pointer;
+    border: none;
+    box-sizing: border-box;
     color: $grey;
+    cursor: pointer;
+    display: block;
     font-family: $lato-l;
     font-size: 16px;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
 
     &:hover,
     &:focus {
