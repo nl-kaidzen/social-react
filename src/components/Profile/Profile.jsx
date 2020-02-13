@@ -5,10 +5,10 @@ import MyPosts from './MyPosts/MyPosts';
 const Profile = () => {
   return (
     <main className={style.content}>
-      <img src="https://lh3.googleusercontent.com/proxy/u57nJ6lJto89C-Hn2ws_Eto7mSm6GTVsUcJQHSutyeodmFyyAWWmtg3IBwPEriHUcGpk2t9E1tx_CmJDZr08lUbla-2tO0Lgd8l5vTfEbQYOAthBEDNRGrfW" className={style.hero__img} alt="background" />
+      <img src="https://lh3.googleusercontent.com/proxy/u57nJ6lJto89C-Hn2ws_Eto7mSm6GTVsUcJQHSutyeodmFyyAWWmtg3IBwPEriHUcGpk2t9E1tx_CmJDZr08lUbla-2tO0Lgd8l5vTfEbQYOAthBEDNRGrfW" className={style.heroImg} alt="background" />
 
-      <div className={style.user__info}>
-        <div className={style.user__avatar}>
+      <div className={style.userInfo}>
+        <div className={style.userAvatar}>
           <img src="https://static.secure.website/wscfus/8525698/4941086/urr0lhqrrlyojv0xyxwj-w885-o.jpg" alt="user avatar" 
           className={style.avatar} />
         </div>

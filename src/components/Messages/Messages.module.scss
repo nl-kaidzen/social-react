@@ -16,27 +16,6 @@
     border-radius: 4px;
 }
 
-.dialogsItem {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    font-family: $mon-r;
-    min-height: 40px;
-    color: $grey-light;
-    cursor: pointer;
-
-    &.active {
-        background-color: $grey;
-    }
-
-    &:hover,
-    &:focus {
-        background-color: $cyan;
-        color: $white;
-    }
-}
-
 .messagesList {
     padding: 20px;
 }

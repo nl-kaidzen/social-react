@@ -1,0 +1,23 @@
+@import './../../../scss/global/variables.scss';
+
+.dialogsItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-family: $mon-r;
+    min-height: 40px;
+    color: $grey-dark;
+    cursor: pointer;
+    text-decoration: none;
+
+    &.active {
+        background-color: $grey;
+    }
+
+    &:hover,
+    &:focus {
+        background-color: $cyan;
+        color: $white;
+    }
+}

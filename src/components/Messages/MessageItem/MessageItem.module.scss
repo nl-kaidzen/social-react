@@ -1,0 +1,12 @@
+@import './../../../scss/global/variables.scss';
+
+.message {
+    width: max-content;
+    background-color: $grey-light;
+    padding: 10px 25px;
+    color: $grey-dark;
+    font-family: $lato-r;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}

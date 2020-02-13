@@ -5,18 +5,18 @@
     flex-direction: column;
 }
 
-.hero__img {
+.heroImg {
     width: 100%;
     height: 100px;
     background-size: contain;
     background-position: 50% 50%;
 }
 
-.user__info {
+.userInfo {
     display: flex;
 }
 
-.user__avatar {
+.userAvatar {
     width: 20%;
     height: auto;
 }
