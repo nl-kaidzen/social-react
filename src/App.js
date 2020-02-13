@@ -15,7 +15,7 @@ function App() {
 				<Navbar />
 				<section className="app-router-container">
 					<Route path='/profile' component={Profile}/>
-					<Route path='/messges' component={Messages}/>
+					<Route path='/messages' component={Messages}/>
 				</section>
 			</div>
 		</BrowserRouter>

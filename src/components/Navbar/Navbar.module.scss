@@ -25,7 +25,8 @@
     width: 100%;
 
     &:hover,
-    &:focus {
+    &:focus,
+    &.active {
         background-color: $cyan;
         color: $white;
     }

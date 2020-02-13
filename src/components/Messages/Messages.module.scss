@@ -1,0 +1,53 @@
+@import './../../scss/global/variables.scss';
+
+.messagesWrapper {
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+}
+
+.dialogsList,
+.messagesList {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    list-style: none;
+    border: 2px solid $grey-light;
+    margin: 20px 20px 0;
+    border-radius: 4px;
+}
+
+.dialogsItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-family: $mon-r;
+    min-height: 40px;
+    color: $grey-light;
+    cursor: pointer;
+
+    &.active {
+        background-color: $grey;
+    }
+
+    &:hover,
+    &:focus {
+        background-color: $cyan;
+        color: $white;
+    }
+}
+
+.messagesList {
+    padding: 20px;
+}
+
+.message {
+    width: max-content;
+    background-color: $grey-light;
+    padding: 10px 25px;
+    color: $grey-dark;
+    font-family: $lato-r;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
