@@ -1,4 +1,6 @@
 import React from 'react';
+import { Route, BrowserRouter } from 'react-router-dom';
+
 import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
@@ -7,14 +9,16 @@ import Messages from './components/Messages/Messages';
 
 function App() {
 	return (
-		<div className="app-wrapper">
-			<Header />
-			<Navbar />
-			<section className="app-router-container">
-				<Profile />
-				<Messages />
-			</section>
-		</div>
+		<BrowserRouter>
+			<div className="app-wrapper">
+				<Header />
+				<Navbar />
+				<section className="app-router-container">
+					<Route path='/profile' component={Profile}/>
+					<Route path='/messges' component={Messages}/>
+				</section>
+			</div>
+		</BrowserRouter>
 	);
 }
 
