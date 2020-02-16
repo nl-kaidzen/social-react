@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Profile.module.scss';
 import MyPosts from './MyPosts/MyPosts';
 
-const Profile = () => {
+const Profile = (props) => {
   return (
     <main className={style.content}>
       <img src="https://lh3.googleusercontent.com/proxy/u57nJ6lJto89C-Hn2ws_Eto7mSm6GTVsUcJQHSutyeodmFyyAWWmtg3IBwPEriHUcGpk2t9E1tx_CmJDZr08lUbla-2tO0Lgd8l5vTfEbQYOAthBEDNRGrfW" className={style.heroImg} alt="background" />
@@ -18,7 +18,7 @@ const Profile = () => {
       </div>
       <section>
         <div>New post</div>
-        <MyPosts />
+        <MyPosts posts={props.posts}/>
       </section>
     </main>
   );

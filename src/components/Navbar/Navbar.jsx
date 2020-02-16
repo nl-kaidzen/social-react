@@ -1,8 +1,15 @@
 import React from 'react';
 import style from './Navbar.module.scss';
 import { NavLink } from 'react-router-dom';
+import FriendItem from './FriendItem/FriendList';
 
-const Navbar = () => {
+const Navbar = (props) => {
+  let friendListElements = props.friends.map((friend) => {
+    return(
+      <FriendItem name={friend} />
+    );
+  });
+
   return (
     <nav className={style.navbar}>
       <ul className={style.list}>
@@ -11,6 +18,10 @@ const Navbar = () => {
         <li><NavLink to="/news" className={style.button}>News</NavLink></li>
         <li><NavLink to="/music" className={style.button}>Music</NavLink></li>
         <li><NavLink to="/settings" className={style.button}>Settings</NavLink></li>
+      </ul>
+
+      <ul className={style.friendList}>
+        {friendListElements}
       </ul>
     </nav>
   );

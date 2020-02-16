@@ -4,21 +4,21 @@ import DialogItem from './DialogItem/DialogItem';
 import MessageItem from './MessageItem/MessageItem';
 
 const Messages = (props) => {
+    let dialogElements = props.dialogs.map((dialog) => {
+        return <DialogItem name={dialog.name} id={dialog.id} />
+    });
+
+    let messageElements = props.messages.map((message) => {
+        return <MessageItem message={message.message}/>
+    });
+
     return(
         <div className={style.messagesWrapper}>
             <ul className={style.dialogsList}>
-                <DialogItem name="Anastasia" id="1"/>
-                <DialogItem name="Viktoria" id="2"/>
-                <DialogItem name="Valeriy" id="3"/>
-                <DialogItem name="Irina" id="4"/>
-                <DialogItem name="Anastasia" id="5"/>
-                <DialogItem name="Vladimir" id="6"/>
+                {dialogElements}
             </ul>
             <ul className={style.messagesList}>
-                <MessageItem message="Hello"/>
-                <MessageItem message="How are you?"/>
-                <MessageItem message="I'm fine, thanks!"/>
-                <MessageItem message="I am learning React. It is cool!"/>
+                {messageElements}
             </ul>    
         </div>
     );

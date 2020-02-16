@@ -7,15 +7,18 @@ import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Messages from './components/Messages/Messages';
 
-function App() {
+function App(props) {
 	return (
 		<BrowserRouter>
 			<div className="app-wrapper">
 				<Header />
-				<Navbar />
+				<Navbar friends={props.state.sidebar.friends}/>
 				<section className="app-router-container">
-					<Route path='/profile' component={Profile}/>
-					<Route path='/messages' component={Messages}/>
+					<Route path='/profile' render={() => <Profile 
+						posts={props.state.profilePage.posts}/>}/>
+					<Route path='/messages' render={() => <Messages 
+						dialogs={props.state.messagePage.dialogsData} 
+						messages={props.state.messagePage.messageData}/>}/>
 				</section>
 			</div>
 		</BrowserRouter>

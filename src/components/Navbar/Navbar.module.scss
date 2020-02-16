@@ -31,3 +31,11 @@
         color: $white;
     }
 }
+
+.friendList {
+    padding: 0;
+    margin-top: 30px;
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
