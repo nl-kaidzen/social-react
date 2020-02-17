@@ -5,11 +5,11 @@ import MessageItem from './MessageItem/MessageItem';
 
 const Messages = (props) => {
     let dialogElements = props.dialogs.map((dialog) => {
-        return <DialogItem name={dialog.name} id={dialog.id} />
+        return <DialogItem name={dialog.name} id={dialog.id} key={dialog.id} />
     });
 
     let messageElements = props.messages.map((message) => {
-        return <MessageItem message={message.message}/>
+        return <MessageItem message={message.message} key={message.id}/>
     });
 
     return(

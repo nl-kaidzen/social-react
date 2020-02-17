@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './Profile.module.scss';
 import MyPosts from './MyPosts/MyPosts';
+import NewPost from './NewPost/NewPost';
 
 const Profile = (props) => {
   return (
@@ -17,7 +18,7 @@ const Profile = (props) => {
 					</div>
       </div>
       <section>
-        <div>New post</div>
+        <NewPost />
         <MyPosts posts={props.posts}/>
       </section>
     </main>

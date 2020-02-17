@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import state from './state/state.js';
+import { addPost } from './state/state.js';
+
+addPost('I love state');
 
 ReactDOM.render(<App state={state}/>, document.getElementById('root'));
 

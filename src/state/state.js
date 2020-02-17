@@ -27,4 +27,13 @@ let state = {
     }
 }
 
+export let addPost = (postMessage) => {
+    let newPost = {
+        id: 5,
+        message: postMessage,
+        author: 'Andrei Khabarow'
+    };
+    state.profilePage.posts.push(newPost);
+}
+
 export default state;
