@@ -15,7 +15,8 @@ function App(props) {
 				<Navbar friends={props.state.sidebar.friends}/>
 				<section className="app-router-container">
 					<Route path='/profile' render={() => <Profile 
-						posts={props.state.profilePage.posts}/>}/>
+						posts={props.state.profilePage.posts}
+						addPost={props.addPost}/>}/>
 					<Route path='/messages' render={() => <Messages 
 						dialogs={props.state.messagePage.dialogsData} 
 						messages={props.state.messagePage.messageData}/>}/>

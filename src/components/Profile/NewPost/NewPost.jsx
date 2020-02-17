@@ -5,7 +5,7 @@ const NewPost = (props) => {
 
     let onSendButtonClick = () => {
         let textareaValue = newPostElement.current.value;
-        alert(textareaValue);
+        props.addPost(textareaValue);
     }
 
     let newPostElement = React.createRef();

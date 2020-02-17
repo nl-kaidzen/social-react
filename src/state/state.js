@@ -1,3 +1,4 @@
+import { renderApp } from './../render.js'
 let state = {
     messagePage: {
         dialogsData: [
@@ -34,6 +35,7 @@ export let addPost = (postMessage) => {
         author: 'Andrei Khabarow'
     };
     state.profilePage.posts.push(newPost);
+    renderApp(state);
 }
 
 export default state;
