@@ -17,7 +17,8 @@ function App(props) {
 					<Route path='/profile' render={() => <Profile 
 						posts={props.state.profilePage.posts}
 						addPost={props.addPost}
-						newPostText={props.newPostText}/>}/>
+						setNewPostText={props.setNewPostText}
+						postValue={props.state.profilePage.newPostText}/>}/>
 					<Route path='/messages' render={() => <Messages 
 						dialogs={props.state.messagePage.dialogsData} 
 						messages={props.state.messagePage.messageData}/>}/>

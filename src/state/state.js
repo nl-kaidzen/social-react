@@ -37,12 +37,14 @@ export let addPost = () => {
         author: 'Andrei Khabarow'
     };
     state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText = '';
     renderApp(state);
 };
 
 export let changeNewPostText = (postText) => {
     state.profilePage.newPostText = postText;
     renderApp(state);
+    console.log(state.profilePage.newPostText)
 };
 
 export default state;

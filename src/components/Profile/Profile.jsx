@@ -18,8 +18,11 @@ const Profile = (props) => {
 					</div>
       </div>
       <section>
-        <NewPost addPost={props.addPost} newPostText={props.newPostText}/>
-        <MyPosts posts={props.posts}/>
+        <NewPost 
+          addPost={props.addPost} 
+          setNewPostText={props.setNewPostText}
+          postValue={props.postValue} />
+        <MyPosts posts={props.posts} />
       </section>
     </main>
   );

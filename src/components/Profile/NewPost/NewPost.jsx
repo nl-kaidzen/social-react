@@ -9,18 +9,21 @@ const NewPost = (props) => {
 
     let onTextareaValueChange = () => {
         let textareaValue = newPostElement.current.value;
-        props.newPostText(textareaValue);
+        props.setNewPostText(textareaValue);
     }
 
     let newPostElement = React.createRef();
 
     return(
         <div className={style.wrapper}>
-            <textarea name="" ref={newPostElement} className={style.textarea}></textarea>
+            <textarea name="" 
+                ref={newPostElement} 
+                className={style.textarea}
+                value={props.newPostText}
+                onChange={onTextareaValueChange} />
             <button 
                 className={style.button}
-                onClick={onSendButtonClick}
-                onChange={onTextareaValueChange}>Send</button>
+                onClick={onSendButtonClick}>Send</button>
         </div>
     );
 }
