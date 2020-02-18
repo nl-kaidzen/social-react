@@ -2,7 +2,6 @@ import React from 'react';
 import style from './NewPost.module.scss';
 
 const NewPost = (props) => {
-
     let onSendButtonClick = () => {
         props.addPost();
     }
@@ -19,7 +18,7 @@ const NewPost = (props) => {
             <textarea name="" 
                 ref={newPostElement} 
                 className={style.textarea}
-                value={props.newPostText}
+                value={props.postValue}
                 onChange={onTextareaValueChange} />
             <button 
                 className={style.button}
