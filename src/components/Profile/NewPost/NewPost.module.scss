@@ -10,10 +10,12 @@
 .textarea {
     background-color: $white;
     border: 2px solid $grey;
-    width: 100%;
-    height: 120px;
+    box-sizing: border-box;
     font-family: $lato-s;
     font-size: 14px;
+    height: 120px;
+    padding: 10px;
+    width: 100%;
 }
 
 .button {

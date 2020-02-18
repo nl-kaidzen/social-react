@@ -1,5 +1,3 @@
-import { renderApp } from './../render.js'
-
 let state = {
     messagePage: {
         dialogsData: [
@@ -30,7 +28,11 @@ let state = {
     }
 }
 
-export let addPost = () => {
+let renderApp = () => {
+    console.log('State changed');
+}
+
+export const addPost = () => {
     let newPost = {
         id: 5,
         message: state.profilePage.newPostText,
@@ -41,10 +43,14 @@ export let addPost = () => {
     renderApp(state);
 };
 
-export let changeNewPostText = (postText) => {
+export const changeNewPostText = (postText) => {
     state.profilePage.newPostText = postText;
     renderApp(state);
     console.log(state.profilePage.newPostText)
 };
+
+export const subscribe = (observer) => {
+    renderApp = observer;
+}
 
 export default state;
