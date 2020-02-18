@@ -4,8 +4,12 @@ import style from './NewPost.module.scss';
 const NewPost = (props) => {
 
     let onSendButtonClick = () => {
+        props.addPost();
+    }
+
+    let onTextareaValueChange = () => {
         let textareaValue = newPostElement.current.value;
-        props.addPost(textareaValue);
+        props.newPostText(textareaValue);
     }
 
     let newPostElement = React.createRef();
@@ -15,7 +19,8 @@ const NewPost = (props) => {
             <textarea name="" ref={newPostElement} className={style.textarea}></textarea>
             <button 
                 className={style.button}
-                onClick={onSendButtonClick}>Send</button>
+                onClick={onSendButtonClick}
+                onChange={onTextareaValueChange}>Send</button>
         </div>
     );
 }

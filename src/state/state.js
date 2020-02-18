@@ -1,4 +1,5 @@
 import { renderApp } from './../render.js'
+
 let state = {
     messagePage: {
         dialogsData: [
@@ -21,21 +22,27 @@ let state = {
             {id: 1, author: 'Julien Nguen', message: 'Hey guys concerning the functionnalities it looks ok for me, but on the integration there are some finetune that need to be done. expecially on the breadcrumb but this is not the final design so i think Andrei will finetune this a little bit later ^^'},
             {id: 2, author: 'Andrei Khabarov', message: 'React are awesome!'},
             {id: 3, author: 'Julien Nguen', message: 'Hello, this is my first post!'},
-        ]
+        ],
+        newPostText: '',
     },
     sidebar: {
         friends: ['Anastasia', 'Vladimir', 'Igor'],
     }
 }
 
-export let addPost = (postMessage) => {
+export let addPost = () => {
     let newPost = {
         id: 5,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         author: 'Andrei Khabarow'
     };
     state.profilePage.posts.push(newPost);
     renderApp(state);
-}
+};
+
+export let changeNewPostText = (postText) => {
+    state.profilePage.newPostText = postText;
+    renderApp(state);
+};
 
 export default state;
