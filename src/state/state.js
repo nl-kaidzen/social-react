@@ -1,56 +1,56 @@
-let state = {
-    messagePage: {
-        dialogsData: [
-            {id:1, name: 'Anastasia'},
-            {id:2, name: 'Viktoria'},
-            {id:3, name: 'Valeriy'},
-            {id:4, name: 'Irina'},
-            {id:5, name: 'Anastasia'},
-            {id:6, name: 'Vladimir'}
-        ],
-        messageData: [
-            {id:1, message: 'Hello'},
-            {id:2, message: 'How are you?'},
-            {id:3, message: 'I\'m fine, thanks!'},
-            {id:4, message: 'I am learning React. It is cool!'},
-        ]
+let store = {
+    _state: { 
+        messagePage: {
+            dialogsData: [
+                {id:1, name: 'Anastasia'},
+                {id:2, name: 'Viktoria'},
+                {id:3, name: 'Valeriy'},
+                {id:4, name: 'Irina'},
+                {id:5, name: 'Anastasia'},
+                {id:6, name: 'Vladimir'}
+            ],
+            messageData: [
+                {id:1, message: 'Hello'},
+                {id:2, message: 'How are you?'},
+                {id:3, message: 'I\'m fine, thanks!'},
+                {id:4, message: 'I am learning React. It is cool!'},
+            ]
+        },
+        profilePage: {
+            posts: [
+                {id: 1, author: 'Julien Nguen', message: 'Hey guys concerning the functionnalities it looks ok for me, but on the integration there are some finetune that need to be done. expecially on the breadcrumb but this is not the final design so i think Andrei will finetune this a little bit later ^^'},
+                {id: 2, author: 'Andrei Khabarov', message: 'React are awesome!'},
+                {id: 3, author: 'Julien Nguen', message: 'Hello, this is my first post!'},
+            ],
+            newPostText: '',
+        },
+        sidebar: {
+            friends: ['Anastasia', 'Vladimir', 'Igor'],
+        }
     },
-    profilePage: {
-        posts: [
-            {id: 1, author: 'Julien Nguen', message: 'Hey guys concerning the functionnalities it looks ok for me, but on the integration there are some finetune that need to be done. expecially on the breadcrumb but this is not the final design so i think Andrei will finetune this a little bit later ^^'},
-            {id: 2, author: 'Andrei Khabarov', message: 'React are awesome!'},
-            {id: 3, author: 'Julien Nguen', message: 'Hello, this is my first post!'},
-        ],
-        newPostText: '',
+    getState() {
+        return this._state;
     },
-    sidebar: {
-        friends: ['Anastasia', 'Vladimir', 'Igor'],
-    }
+    renderApp() {
+        console.log('State was updated');
+    },
+    subscribe(observer) {
+        this.renderApp = observer;
+    },
+    addPost() {
+        let newPost = {
+            id: 5,
+            message: this._state.profilePage.newPostText,
+            author: 'Andrei Khabarow'
+        };
+        this._state.profilePage.posts.push(newPost);
+        this._state.profilePage.newPostText = '';
+        renderApp(this._state);
+    },
+    changeNewPostText(postText) {
+        this._state.profilePage.newPostText = postText;
+        this.renderApp(this._state);
+    },
 }
 
-let renderApp = () => {
-    console.log('State changed');
-}
-
-export const addPost = () => {
-    let newPost = {
-        id: 5,
-        message: state.profilePage.newPostText,
-        author: 'Andrei Khabarow'
-    };
-    state.profilePage.posts.push(newPost);
-    state.profilePage.newPostText = '';
-    renderApp(state);
-};
-
-export const changeNewPostText = (postText) => {
-    state.profilePage.newPostText = postText;
-    renderApp(state);
-    console.log(state.profilePage.newPostText)
-};
-
-export const subscribe = (observer) => {
-    renderApp = observer;
-}
-
-export default state;
+export default store;
