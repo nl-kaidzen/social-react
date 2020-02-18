@@ -31,11 +31,11 @@ let store = {
     getState() {
         return this._state;
     },
-    renderApp() {
+    _callSubscriber() {
         console.log('State was updated');
     },
     subscribe(observer) {
-        this.renderApp = observer;
+        this._callSubscriber = observer;
     },
     addPost() {
         let newPost = {
@@ -45,11 +45,11 @@ let store = {
         };
         this._state.profilePage.posts.push(newPost);
         this._state.profilePage.newPostText = '';
-        renderApp(this._state);
+        this._callSubscriber(this._state);
     },
     changeNewPostText(postText) {
         this._state.profilePage.newPostText = postText;
-        this.renderApp(this._state);
+        this._callSubscriber(this._state);
     },
 }
 

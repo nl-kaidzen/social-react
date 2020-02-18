@@ -5,14 +5,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-let renderApp = (store) => {
+let renderApp = (state) => {
     ReactDOM.render(<App 
-        state={store.getState} 
-        addPost={store.addPost} 
-        setNewPostText={store.changeNewPostText} />, document.getElementById('root'));
+        state={state} 
+        addPost={store.addPost.bind(store)} 
+        setNewPostText={store.changeNewPostText.bind(store)} />, document.getElementById('root'));
 };
 
-renderApp(state);
+renderApp(store.getState());
 store.subscribe(renderApp);
 
 // If you want your app to work offline and load faster, you can change
