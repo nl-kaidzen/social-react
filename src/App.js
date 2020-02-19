@@ -16,8 +16,7 @@ function App(props) {
 				<section className="app-router-container">
 					<Route path='/profile' render={() => <Profile 
 						posts={props.state.profilePage.posts}
-						addPost={props.addPost}
-						setNewPostText={props.setNewPostText}
+						dispatch={props.dispatch}
 						postValue={props.state.profilePage.newPostText}/>}/>
 					<Route path='/messages' render={() => <Messages 
 						dialogs={props.state.messagePage.dialogsData} 

@@ -37,20 +37,22 @@ let store = {
     subscribe(observer) {
         this._callSubscriber = observer;
     },
-    addPost() {
-        let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            author: 'Andrei Khabarow'
-        };
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._state);
-    },
-    changeNewPostText(postText) {
-        this._state.profilePage.newPostText = postText;
-        this._callSubscriber(this._state);
-    },
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 5,
+                message: this._state.profilePage.newPostText,
+                author: 'Andrei Khabarow'
+            };
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._callSubscriber(this._state);
+        }
+        else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.postText;
+            this._callSubscriber(this._state);
+        }
+    }
 }
 
 export default store;

@@ -8,8 +8,7 @@ import App from './App';
 let renderApp = (state) => {
     ReactDOM.render(<App 
         state={state} 
-        addPost={store.addPost.bind(store)} 
-        setNewPostText={store.changeNewPostText.bind(store)} />, document.getElementById('root'));
+        dispatch={store.dispatch.bind(store)} />, document.getElementById('root'));
 };
 
 renderApp(store.getState());

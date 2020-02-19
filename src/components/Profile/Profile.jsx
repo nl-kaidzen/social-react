@@ -19,8 +19,7 @@ const Profile = (props) => {
       </div>
       <section>
         <NewPost 
-          addPost={props.addPost} 
-          setNewPostText={props.setNewPostText}
+          dispatch={props.dispatch}
           postValue={props.postValue} />
         <MyPosts posts={props.posts} />
       </section>

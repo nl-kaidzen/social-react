@@ -3,12 +3,15 @@ import style from './NewPost.module.scss';
 
 const NewPost = (props) => {
     let onSendButtonClick = () => {
-        props.addPost();
+        props.dispatch({type: 'ADD-POST'});
     }
 
     let onTextareaValueChange = () => {
         let textareaValue = newPostElement.current.value;
-        props.setNewPostText(textareaValue);
+        props.dispatch({
+            type: 'UPDATE-NEW-POST-TEXT',
+            postText: textareaValue,
+        });
     }
 
     let newPostElement = React.createRef();
