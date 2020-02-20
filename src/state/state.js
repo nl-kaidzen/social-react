@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_NEW_DIALOG_MESSAGE = 'ADD-NEW-DIALOG-MESSAGE';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+
 let store = {
     _state: { 
         messagePage: {
@@ -14,7 +19,8 @@ let store = {
                 {id:2, message: 'How are you?'},
                 {id:3, message: 'I\'m fine, thanks!'},
                 {id:4, message: 'I am learning React. It is cool!'},
-            ]
+            ],
+            newMessageText: '123',
         },
         profilePage: {
             posts: [
@@ -48,11 +54,38 @@ let store = {
             this._state.profilePage.newPostText = '';
             this._callSubscriber(this._state);
         }
-        else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+        if (action.type === 'UPDATE-NEW-POST-TEXT') {
             this._state.profilePage.newPostText = action.postText;
+            this._callSubscriber(this._state);
+        }
+        if (action.type === 'ADD-NEW-DIALOG-MESSAGE') {
+            let newMessage = {
+                id: 7,
+                message: this._state.messagePage.newMessageText,
+            }
+            this._state.messagePage.messageData.push(newMessage);
+            this._callSubscriber(this._state);
+        }
+        if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            this._state.messagePage.newMessageText = action.message;
+            console.log('catch');
             this._callSubscriber(this._state);
         }
     }
 }
+
+export const addPostActionCreator = () => ({ type: ADD_POST });
+
+export const addNewDailogMessageActionCreator = () => ({ type: ADD_NEW_DIALOG_MESSAGE })
+
+export const updateNewPostTextActionCreator = (message) => 
+    ({ type: UPDATE_NEW_POST_TEXT, postText: message });
+
+export const updateNewMessageTextActionCreator = (message) => {
+    let action = { type: UPDATE_NEW_MESSAGE_TEXT, message: message };
+    console.log(action, message);
+    return action;   
+}
+    
 
 export default store;

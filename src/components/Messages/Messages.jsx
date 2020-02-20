@@ -2,6 +2,7 @@ import React from 'react';
 import style from './Messages.module.scss';
 import DialogItem from './DialogItem/DialogItem';
 import MessageItem from './MessageItem/MessageItem';
+import NewMessageArea from './NewMessageArea/NewMessageArea';
 
 const Messages = (props) => {
     let dialogElements = props.dialogs.map((dialog) => {
@@ -17,9 +18,13 @@ const Messages = (props) => {
             <ul className={style.dialogsList}>
                 {dialogElements}
             </ul>
-            <ul className={style.messagesList}>
-                {messageElements}
-            </ul>    
+            <div className={style.messageContainer}>
+                <ul className={style.messagesList}>
+                    {messageElements}
+                </ul>
+                <NewMessageArea newMessageText={props.newMessageText} dispatch={props.dispatch}/>
+            </div>
+            
         </div>
     );
 }

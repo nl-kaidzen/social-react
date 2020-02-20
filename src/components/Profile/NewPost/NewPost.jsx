@@ -1,17 +1,15 @@
 import React from 'react';
 import style from './NewPost.module.scss';
+import { addPostActionCreator, updateNewPostTextActionCreator } from './../../../state/state.js'
 
 const NewPost = (props) => {
     let onSendButtonClick = () => {
-        props.dispatch({type: 'ADD-POST'});
+        props.dispatch(addPostActionCreator());
     }
 
     let onTextareaValueChange = () => {
         let textareaValue = newPostElement.current.value;
-        props.dispatch({
-            type: 'UPDATE-NEW-POST-TEXT',
-            postText: textareaValue,
-        });
+        props.dispatch(updateNewPostTextActionCreator(textareaValue));
     }
 
     let newPostElement = React.createRef();

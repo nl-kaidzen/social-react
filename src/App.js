@@ -20,7 +20,9 @@ function App(props) {
 						postValue={props.state.profilePage.newPostText}/>}/>
 					<Route path='/messages' render={() => <Messages 
 						dialogs={props.state.messagePage.dialogsData} 
-						messages={props.state.messagePage.messageData}/>}/>
+						messages={props.state.messagePage.messageData}
+						dispatch={props.dispatch}
+						newMessageText={props.state.messagePage.newMessageText}/>}/>
 				</section>
 			</div>
 		</BrowserRouter>
