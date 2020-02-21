@@ -1,11 +1,10 @@
 import React from 'react';
 import style from './NewMessageArea.module.scss';
-import { addNewDailogMessageActionCreator, updateNewMessageTextActionCreator } from './../../../state/state.js';
+import { addNewDailogMessageActionCreator, updateNewMessageTextActionCreator } from './../../../state/message-reducer.js';
 
 const NewMessageArea = (props) => {
     let onMessageAreaChange = () => {
         let value = newMessageAreaRef.current.value;
-        console.log(value);
         props.dispatch(updateNewMessageTextActionCreator(value));
     };
 
@@ -19,11 +18,10 @@ const NewMessageArea = (props) => {
         <div className={style.container}>
             <textarea 
                 className={style.textarea} 
-                cols="30" 
-                rows="10"
                 onChange={onMessageAreaChange}
                 ref={newMessageAreaRef}
-                value={props.newMessageText} />
+                value={props.newMessageText} 
+                placeholder="Enter new message"/>
             <button 
                 className={style.button}
                 onClick={onSendButtonClick}>Send</button>
