@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './NewPost.module.scss';
-import { addPostActionCreator, updateNewPostTextActionCreator } from './../../../state/state.js'
+import { addPostActionCreator, updateNewPostTextActionCreator } from './../../../state/profile-reducer.js'
 
 const NewPost = (props) => {
     let onSendButtonClick = () => {
