@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Profile.module.scss';
 import MyPosts from './MyPosts/MyPosts';
-import NewPost from './NewPost/NewPost';
+import NewPostContainer from './NewPost/NewPostContainer';
 
 const Profile = (props) => {
   return (
@@ -18,9 +18,7 @@ const Profile = (props) => {
 					</div>
       </div>
       <section>
-        <NewPost 
-          dispatch={props.dispatch}
-          postValue={props.postValue} />
+        <NewPostContainer />
         <MyPosts posts={props.posts} />
       </section>
     </main>

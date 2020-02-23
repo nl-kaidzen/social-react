@@ -26,7 +26,7 @@ let store = {
                 {id: 2, author: 'Andrei Khabarov', message: 'React are awesome!'},
                 {id: 3, author: 'Julien Nguen', message: 'Hello, this is my first post!'},
             ],
-            newPostText: '',
+            newPostText: '123',
         },
         sidebar: {
             friends: ['Anastasia', 'Vladimir', 'Igor'],

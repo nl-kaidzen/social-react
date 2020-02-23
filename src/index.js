@@ -2,13 +2,21 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import store from './state/redux-store.js';
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { Provider } from 'react-redux';
 
 let renderApp = (state) => {
-    ReactDOM.render(<App 
-        state={state} 
-        dispatch={store.dispatch.bind(store)} />, document.getElementById('root'));
+    ReactDOM.render(
+    <BrowserRouter>
+        <Provider store={store}>
+            <App 
+                state={state} 
+                dispatch={store.dispatch.bind(store)} 
+                store={store} />
+        </Provider>
+    </BrowserRouter>, document.getElementById('root'));
 };
 
 renderApp(store.getState());
