@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import NewMessage from './NewMessage.jsx';
 import { addNewDailogMessageActionCreator, updateNewMessageTextActionCreator } from '../../../state/message-reducer.js';
@@ -12,7 +11,8 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
     return {
         updateMessageValue: (value) => {
-            dispatch(updateNewMessageTextActionCreator(value));
+            let textareaValue = value;
+            dispatch(updateNewMessageTextActionCreator(textareaValue));
         },
         sendMessage: () => {
             dispatch(addNewDailogMessageActionCreator());

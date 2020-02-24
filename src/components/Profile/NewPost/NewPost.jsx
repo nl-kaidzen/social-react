@@ -17,7 +17,8 @@ const NewPost = (props) => {
                 ref={newPostElement} 
                 className={style.textarea}
                 value={props.value}
-                onChange={onChange} />
+                onChange={onChange} 
+                placeholder='Enter your message'/>
             <button 
                 className={style.button}
                 onClick={onClick}>Send</button>

@@ -19,7 +19,7 @@ const NewMessage = (props) => {
                 className={style.textarea} 
                 onChange={onValueChange}
                 ref={newMessageRef}
-                value={props.newMessageText} 
+                value={props.value} 
                 placeholder="Enter new message"/>
             <button 
                 className={style.button}
