@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Messages from './components/Messages/Messages';
+import UsersContainer from './components/Users/UsersContainer';
 
 function App(props) {
 	return (
@@ -19,6 +20,7 @@ function App(props) {
 					dialogs={props.state.messagePage.dialogsData}
 					messages={props.state.messagePage.messageData}
 					newMessageText={props.state.messagePage.newMessageText} />} />
+				<Route path='/users' render={() => <UsersContainer />} />
 			</section>
 		</div>
 	);
