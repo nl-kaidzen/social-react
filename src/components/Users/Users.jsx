@@ -1,13 +1,13 @@
 import React from 'react';
+import * as axios from 'axios'
 
 const Users = (props) => {
     if (props.users.length === 0) {
-        props.setUsers([
-            { id: 1, imgUrl: 'https://cs9.pikabu.ru/post_img/big/2017/04/12/5/1491981452114887277.jpg', isFollow: true, fullname: 'Andrei K.', status: 'I am boss of React', location: { city: 'Munich', country: 'Germany' } },
-            { id: 2, imgUrl: 'https://cs9.pikabu.ru/post_img/big/2017/04/12/5/1491981452114887277.jpg', isFollow: false, fullname: 'Anastasia K.', status: 'I am junior', location: { city: 'Novosibirsk', country: 'Russia' } },
-            { id: 3, imgUrl: 'https://cs9.pikabu.ru/post_img/big/2017/04/12/5/1491981452114887277.jpg', isFollow: true, fullname: 'Vladimir K.', status: 'Senior BE developer', location: { city: 'Barnaul', country: 'Russia' } },
-            { id: 4, imgUrl: 'https://cs9.pikabu.ru/post_img/big/2017/04/12/5/1491981452114887277.jpg', isFollow: false, fullname: 'Benedikt K.', status: 'Senior Full-Stack Shark', location: { city: 'Ikea', country: 'Sweeden' } },
-        ]);
+
+        axios.get("https://social-network.samuraijs.com/api/1.0/users")
+        .then(responce => {
+            props.setUsers(responce.data.items)
+        });
     }
 
     return (
@@ -17,16 +17,22 @@ const Users = (props) => {
                     return (
                         <div className="userWrapper">
                             <div className="userImg">
-                                <img src={user.imgUrl} alt="User avatar" width="100" height="100"/>
+                                <img src={(user.photos.small !== null) 
+                                    ? user.photos.small 
+                                    : "https://cs9.pikabu.ru/post_img/big/2017/04/12/5/1491981452114887277.jpg"} 
+                                    alt="User avatar" width="100" height="100" />
+                                {user.isFollow 
+                                    ? <button onClick={() => props.unfollow(user.id)}>Unfollow</button> 
+                                    : <button onClick={() => props.follow(user.id)}>Follow</button>}
                             </div>
                             <div className="userInfoWrapper">
                                 <div className="userInfo">
-                                    <p className="userName">{user.fullname}</p>
+                                    <p className="userName">{user.name}</p>
                                     <p className="userStatus">{user.status}</p>
                                 </div>
                                 <div className="userLocation">
-                                    <p className="city">{user.location.city}</p>
-                                    <p className="country">{user.location.country}</p>
+                                    <p className="city">user.location.city</p>
+                                    <p className="country">user.location.country</p>
                                 </div>
                             </div>
                         </div>
