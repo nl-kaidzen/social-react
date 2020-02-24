@@ -22,7 +22,7 @@ const profileReducer = (state = initialState, action) => {
                 posts: [...state.posts, {id: 5, message: state.newPostText, author: 'Andrei Khabarow'}],
                 newPostText: '',
             };
-        }
+        }  
 
         case UPDATE_NEW_POST_TEXT: {
             return {
