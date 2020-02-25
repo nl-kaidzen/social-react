@@ -1,5 +1,6 @@
 import React from 'react';
-import * as axios from 'axios'
+import * as axios from 'axios';
+import style from './Users.module.scss';
 
 const Users = (props) => {
     if (props.users.length === 0) {
@@ -11,12 +12,12 @@ const Users = (props) => {
     }
 
     return (
-        <div>
+        <div className={style.userPage}>
             {
                 props.users.map((user) => {
                     return (
-                        <div className="userWrapper">
-                            <div className="userImg">
+                        <div className={style.userWrapper}>
+                            <div className={style.userImg}>
                                 <img src={(user.photos.small !== null) 
                                     ? user.photos.small 
                                     : "https://cs9.pikabu.ru/post_img/big/2017/04/12/5/1491981452114887277.jpg"} 
@@ -25,14 +26,14 @@ const Users = (props) => {
                                     ? <button onClick={() => props.unfollow(user.id)}>Unfollow</button> 
                                     : <button onClick={() => props.follow(user.id)}>Follow</button>}
                             </div>
-                            <div className="userInfoWrapper">
-                                <div className="userInfo">
-                                    <p className="userName">{user.name}</p>
-                                    <p className="userStatus">{user.status}</p>
+                            <div className={style.userInfoWrapper}>
+                                <div className={style.userInfo}>
+                                    <p className={style.userName}>{user.name}</p>
+                                    <p className={style.userStatus}>{user.status}</p>
                                 </div>
-                                <div className="userLocation">
-                                    <p className="city">user.location.city</p>
-                                    <p className="country">user.location.country</p>
+                                <div className={style.userLocation}>
+                                    <p className={style.city}>user.location.city</p>
+                                    <p className={style.country}>user.location.country</p>
                                 </div>
                             </div>
                         </div>
