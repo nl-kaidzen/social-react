@@ -2,19 +2,18 @@ import React from 'react';
 import * as axios from 'axios';
 import style from './Users.module.scss';
 
-const Users = (props) => {
-    if (props.users.length === 0) {
-
+class Users extends React.Component {
+    componentDidMount() {
         axios.get("https://social-network.samuraijs.com/api/1.0/users")
-        .then(responce => {
-            props.setUsers(responce.data.items)
-        });
+            .then(responce => {
+                this.props.setUsers(responce.data.items)
+            });
     }
-
-    return (
-        <div className={style.userPage}>
+    render() {
+        return(
+            <div className={style.userPage}>
             {
-                props.users.map((user) => {
+                this.props.users.map((user) => {
                     return (
                         <div className={style.userWrapper}>
                             <div className={style.userImg}>
@@ -23,8 +22,8 @@ const Users = (props) => {
                                     : "https://cs9.pikabu.ru/post_img/big/2017/04/12/5/1491981452114887277.jpg"} 
                                     alt="User avatar" width="100" height="100" />
                                 {user.isFollow 
-                                    ? <button onClick={() => props.unfollow(user.id)}>Unfollow</button> 
-                                    : <button onClick={() => props.follow(user.id)}>Follow</button>}
+                                    ? <button onClick={() => this.props.unfollow(user.id)}>Unfollow</button> 
+                                    : <button onClick={() => this.props.follow(user.id)}>Follow</button>}
                             </div>
                             <div className={style.userInfoWrapper}>
                                 <div className={style.userInfo}>
@@ -41,7 +40,8 @@ const Users = (props) => {
                 })
             }
         </div>
-    );
+        );
+    }
 }
 
 export default Users;
