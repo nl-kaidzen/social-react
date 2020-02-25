@@ -11,12 +11,43 @@
     flex-direction: column;
 }
 
+.pagination {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+button {
+    align-items: center;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 1px solid $black;
+    cursor: pointer;
+    display: flex;
+    font-family: $mon-r;
+    font-size: 12px;
+    height: 30px;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    text-align: center;
+    white-space: nowrap;
+    width: 30px;
+
+    &.active {
+        font-weight: bold;
+        background-color: $cyan;
+        color: $white;
+    }
+}
+
 .userWrapper {
+    border-radius: 5px;
+    border: 2px solid $cyan;
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
-    border: 2px solid $cyan;
-    border-radius: 5px;
 }
 
 .userImg {
@@ -31,7 +62,7 @@
         border-radius: 5px;
     }
 
-    button {
+    .friendButton {
         border: none;
         font-size: 12px;
         line-height: 1;
