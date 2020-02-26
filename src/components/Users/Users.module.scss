@@ -18,7 +18,7 @@
     width: 100%;
 }
 
-button {
+.paginationButton {
     align-items: center;
     background-color: transparent;
     border-radius: 50%;
@@ -34,6 +34,7 @@ button {
     text-align: center;
     white-space: nowrap;
     width: 30px;
+    padding: 0;
 
     &.active {
         font-weight: bold;

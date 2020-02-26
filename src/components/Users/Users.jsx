@@ -10,6 +10,15 @@ class Users extends React.Component {
                 this.props.setTotalUsers(responce.data.totalCount);
             });
     }
+
+    onPaginationButtonClick(page) {
+        this.props.setCurrentPage(page);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersOnPage}&page=${this.props.currentPage}`)
+            .then(responce => {
+                this.props.setUsers(responce.data.items);
+                this.props.setTotalUsers(responce.data.totalCount);
+            });
+    }
     render() {
         let totalPages = Math.ceil(this.props.totalCount / this.props.usersOnPage);
         let pages = [];
@@ -22,9 +31,9 @@ class Users extends React.Component {
                 <div className={style.pagination}>
                     {pages.map((page) => {
                         return(<button 
-                            className={`${page === this.props.currentPage ? style.active : ''} {style.paginationButton}`}
-                            onClick={() => {
-                                this.props.setCurrentPage(page);
+                            className={`${page === this.props.currentPage ? style.active : ''} ${style.paginationButton}`}
+                            onClick={(e) => {
+                                this.onPaginationButtonClick(page);
                             }}>{page}</button>)
                     })}
                 </div>
