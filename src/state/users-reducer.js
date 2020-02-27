@@ -10,7 +10,7 @@ let initialState = {
         
     ],
     usersOnPageCount: 20,
-    currentPage: 2,
+    currentPage: 1,
     totalUserCount: 1,
 }
 
