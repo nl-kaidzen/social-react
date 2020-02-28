@@ -1,9 +1,11 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SET_USER_PROFILE_DATA = 'SET-USER-PROFILE-DATA';
 
 export const addPostActionCreator = () => ({ type: ADD_POST });
 export const updateNewPostTextActionCreator = (message) => 
     ({ type: UPDATE_NEW_POST_TEXT, postText: message });
+export const setUserProfileData = (userData) => ({type: SET_USER_PROFILE_DATA, userData})
 
 let initialState = {
     posts: [
@@ -12,6 +14,7 @@ let initialState = {
         {id: 3, author: 'Julien Nguen', message: 'Hello, this is my first post!'},
     ],
     newPostText: '',
+    userData: null,
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -29,6 +32,13 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 newPostText: action.postText
             };
+        }
+
+        case SET_USER_PROFILE_DATA: {
+            return {
+                ...state,
+                userData: action.userData
+            }
         }
 
         default:
