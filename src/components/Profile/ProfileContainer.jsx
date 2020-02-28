@@ -6,7 +6,7 @@ import { setUserProfileData }from './../../state/profile-reducer'
 
 class ProfileAPI extends React.Component {
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/14`)
             .then(responce => {
                 this.props.setUserProfileData(responce.data);
             });
