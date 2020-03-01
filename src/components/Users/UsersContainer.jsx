@@ -44,7 +44,9 @@ let mapDispatchToProps = (dispatch) => {
 class UsersAPI extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersOnPage}&page=${this.props.currentPage}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersOnPage}&page=${this.props.currentPage}`, {
+            withCredentials: true,
+        })
             .then(responce => {
                 this.props.toggleIsFetching(false);
                 this.props.setUsers(responce.data.items);
@@ -55,7 +57,9 @@ class UsersAPI extends React.Component {
     onPaginationButtonClick = (page) => {
         this.props.setCurrentPage(page);
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersOnPage}&page=${page}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.usersOnPage}&page=${page}`, {
+            withCredentials: true,
+        })
             .then(responce => {
                 this.props.toggleIsFetching(false);
                 this.props.setUsers(responce.data.items);

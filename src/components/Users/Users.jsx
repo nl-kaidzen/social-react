@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './Users.module.scss';
+import * as axios from 'axios';
 
 const Users = (props) => {
     let totalPages = Math.ceil(props.totalCount / props.usersOnPage);
@@ -27,10 +28,35 @@ const Users = (props) => {
                                     ? user.photos.small 
                                     : "https://cs9.pikabu.ru/post_img/big/2017/04/12/5/1491981452114887277.jpg"} 
                                     alt="User avatar" width="100" height="100" />
-                                {user.isFollow 
-                                    ? <button onClick={() => props.unfollow(user.id)}
+                                {user.followed
+                                    ? <button onClick={() => 
+                                        {
+                                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
+                                                withCredentials: true,
+                                                headers: {
+                                                    'API-KEY': '8f643635-bea5-453e-83a7-9b686c82a1e4'
+                                                }
+                                            })
+                                                .then(responce => {
+                                                    if (responce.data.resultCode === 0) {
+                                                        props.unfollow(user.id)    
+                                                    }
+                                                });
+                                        }}
                                         className={style.friendButton}>Unfollow</button> 
-                                    : <button onClick={() => props.follow(user.id)}
+                                    : <button onClick={() => {
+                                        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}, {
+                                            withCredentials: true,
+                                            headers: {
+                                                'API-KEY': '8f643635-bea5-453e-83a7-9b686c82a1e4'
+                                            }
+                                        })
+                                            .then(responce => {
+                                                if (responce.data.resultCode === 0) {
+                                                    props.follow(user.id)    
+                                                }
+                                            });
+                                    }}
                                         className={style.friendButton}>Follow</button>}
                             </div>
                             <div className={style.userInfoWrapper}>
