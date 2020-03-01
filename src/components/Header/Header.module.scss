@@ -3,9 +3,31 @@
 .header {
     grid-area: header;
     background-color: $grey-dark;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: $white;
 }
 
 .logo {
     height: 60px;
     width: 60px
+}
+
+.loginWrapper {
+    margin-right: 20px;
+}
+
+.loginLink {
+    color: $white;
+    text-decoration: none;
+    font-family: $mon-r;
+    font-size: 14px;
+
+    &:hover,
+    &:focus {
+        color: $grey-light;
+    }
 }
