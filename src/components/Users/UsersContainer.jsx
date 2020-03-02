@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setUsersAC, followAC, unfollowAC, setCurrentPageAC, setUserOnPageAC, setTotalUsersAC, toggleIsFetchingAC } from './../../state/users-reducer.js';
+import { setUsersAC, followAC, unfollowAC, setCurrentPageAC, setUserOnPageAC, setTotalUsersAC, toggleIsFetchingAC, toggleUpdatingStatusUser } from './../../state/users-reducer.js';
 import Users from './Users.jsx';
 import Preloader from '../common/Preloader/Preloader.jsx';
 import  { userAPI } from './../../api/api';
@@ -12,6 +12,7 @@ let mapStateToProps = (state) => {
         usersOnPage: state.usersPage.usersOnPageCount,
         totalCount: state.usersPage.totalUserCount,
         isFetching: state.usersPage.isFetching,
+        isFollowingStatus: state.usersPage.isFollowingStatus
     }
 }
 
@@ -38,6 +39,9 @@ let mapDispatchToProps = (dispatch) => {
         toggleIsFetching: (isFetching) => {
             dispatch(toggleIsFetchingAC(isFetching));
         },
+        toggleUpdatingStatusUser: (user, isUpdate) => {
+            dispatch(toggleUpdatingStatusUser(user, isUpdate))
+        }
     }
 }
 
@@ -74,7 +78,9 @@ class UsersAPI extends React.Component {
                     currentPage={this.props.currentPage}
                     follow={this.props.follow}
                     unfollow={this.props.unfollow}
-                    onPaginationButtonClick={this.onPaginationButtonClick}/>
+                    onPaginationButtonClick={this.onPaginationButtonClick}
+                    isFollowingStatus={this.props.isFollowingStatus}
+                    toggleUpdatingStatusUser={this.props.toggleUpdatingStatusUser}/>
             }
         </>    
         );  

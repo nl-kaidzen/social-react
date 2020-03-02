@@ -29,21 +29,25 @@ const Users = (props) => {
                                     : "https://cs9.pikabu.ru/post_img/big/2017/04/12/5/1491981452114887277.jpg"} 
                                     alt="User avatar" width="100" height="100" />
                                 {user.followed
-                                    ? <button onClick={() => {
-                                            followAPI.unfollow(user.id)
-                                                .then(responce => {
-                                                    if (responce.data.resultCode === 0) {
-                                                        props.unfollow(user.id)    
-                                                    }
-                                                });
+                                    ? <button disabled={props.isFollowingStatus.some(id => id === user.id)} onClick={() => {
+                                        props.toggleUpdatingStatusUser(user.id, true);
+                                        followAPI.unfollow(user.id)
+                                            .then(responce => {
+                                                if (responce.data.resultCode === 0) {
+                                                    props.unfollow(user.id)    
+                                                }
+                                                props.toggleUpdatingStatusUser(user.id, false);
+                                            });
                                         }}
                                         className={style.friendButton}>Unfollow</button> 
-                                    : <button onClick={() => {
+                                    : <button disabled={props.isFollowingStatus.some(id => id === user.id)} onClick={() => {
+                                        props.toggleUpdatingStatusUser(user.id, true);
                                         followAPI.follow(user.id)
                                             .then(responce => {
                                                 if (responce.data.resultCode === 0) {
                                                     props.follow(user.id)    
                                                 }
+                                                props.toggleUpdatingStatusUser(user.id, false);
                                             });
                                     }}
                                         className={style.friendButton}>Follow</button>}
