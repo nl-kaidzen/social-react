@@ -76,6 +76,12 @@
         color: $white;
         text-transform: uppercase;
         height: 30px;
+        
+        &[disabled] {
+            background-color: $grey-light;
+            color: $grey-dark;
+            border: 1px solid $grey-light;
+        }
 
         &:focus,
         &:hover {
@@ -91,11 +97,6 @@
                 color: $grey-dark;
                 border: 1px solid $grey-light;
             }
-        }
-        &[disabled] {
-            background-color: $grey-light;
-            color: $grey-dark;
-            border: 1px solid $grey-light;
         }
     }
 }
