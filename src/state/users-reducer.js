@@ -1,3 +1,5 @@
+import { userAPI } from './../api/api';
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
@@ -100,13 +102,24 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-export const followAC = (id) => ({ type: FOLLOW, userId: id });
-export const unfollowAC = (id) => ({ type: UNFOLLOW, userId: id });
-export const setUsersAC = (users) => ({ type: SET_USERS, users });
-export const setUserOnPageAC = (count) => ({ type: SET_USERS_COUNT, count });
-export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, page: currentPage });
-export const setTotalUsersAC = (totalUsers) => ({ type: SET_TOTAL_USERS, totalUsers });
-export const toggleIsFetchingAC = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
+export const follow = (id) => ({ type: FOLLOW, userId: id });
+export const unfollow = (id) => ({ type: UNFOLLOW, userId: id });
+export const setUsers = (users) => ({ type: SET_USERS, users });
+export const setUserOnPage = (count) => ({ type: SET_USERS_COUNT, count });
+export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, page: currentPage });
+export const setTotalUsers = (totalUsers) => ({ type: SET_TOTAL_USERS, totalUsers });
+export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 export const toggleUpdatingStatusUser = (user, isUpdating) => ({type: TOGGLE_FOLLOWING_STATUS, user, isUpdating})
+
+export const getUsers = (currentPage, usersOnPage) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));   
+        userAPI.getUsers(currentPage, usersOnPage).then(data => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsers(data.totalCount));
+        });
+    }
+}
 
 export default usersReducer;

@@ -1,9 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setUsersAC, followAC, unfollowAC, setCurrentPageAC, setUserOnPageAC, setTotalUsersAC, toggleIsFetchingAC, toggleUpdatingStatusUser } from './../../state/users-reducer.js';
+import { 
+    follow, unfollow, 
+    setCurrentPage, 
+    toggleUpdatingStatusUser,
+    getUsers,
+} from './../../state/users-reducer.js';
 import Users from './Users.jsx';
 import Preloader from '../common/Preloader/Preloader.jsx';
-import  { userAPI } from './../../api/api';
 
 let mapStateToProps = (state) => {
     return {
@@ -16,55 +20,14 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (id) => {
-            dispatch(followAC(id))
-        },
-        unfollow: (id) => {
-            dispatch(unfollowAC(id));
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users));
-        },
-        setCurrentPage: (page) => {
-            dispatch(setCurrentPageAC(page));
-        },
-        setUsersOnPage: (count) => {
-            dispatch(setUserOnPageAC(count));
-        },
-        setTotalUsers: (count) => {
-            dispatch(setTotalUsersAC(count));
-        },
-        toggleIsFetching: (isFetching) => {
-            dispatch(toggleIsFetchingAC(isFetching));
-        },
-        toggleUpdatingStatusUser: (user, isUpdate) => {
-            dispatch(toggleUpdatingStatusUser(user, isUpdate))
-        }
-    }
-}
-
 class UsersAPI extends React.Component {
     componentDidMount() {
-        this.props.toggleIsFetching(true);
-        userAPI.getUsers(this.props.currentPage, this.props.usersOnPage)
-            .then(data => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(data.items);
-                this.props.setTotalUsers(data.totalCount);
-            });
+        this.props.getUsers(this.props.currentPage, this.props.usersOnPage);
     }
 
-    onPaginationButtonClick = (page) => {
+    onPaginationButtonClick = (page, usersOnPage) => {
         this.props.setCurrentPage(page);
-        this.props.toggleIsFetching(true);
-        userAPI.getUsers(page, this.props.usersOnPage)
-            .then(data => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(data.items);
-                this.props.setTotalUsers(data.totalCount);
-            });
+        this.props.getUsers(page, usersOnPage)
     }
     render() {
         return(
@@ -87,6 +50,12 @@ class UsersAPI extends React.Component {
     }
 }
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPI);
+const UsersContainer = connect(mapStateToProps, {
+    follow,
+    unfollow, 
+    setCurrentPage,
+    toggleUpdatingStatusUser,
+    getUsers,
+})(UsersAPI);
 
 export default UsersContainer;

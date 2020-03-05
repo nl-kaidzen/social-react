@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Users.module.scss';
-import { followAPI } from './../../api/api'
+import { userAPI } from './../../api/api'
 
 const Users = (props) => {
     let totalPages = Math.ceil(props.totalCount / props.usersOnPage);
@@ -16,7 +16,7 @@ const Users = (props) => {
                     return(<button 
                         className={`${page === props.currentPage ? style.active : ''} ${style.paginationButton}`}
                         onClick={(e) => {
-                            props.onPaginationButtonClick(page);
+                            props.onPaginationButtonClick(page, props.usersOnPage);
                         }}>{page}</button>)
                 })}
             </div>
@@ -31,7 +31,7 @@ const Users = (props) => {
                                 {user.followed
                                     ? <button disabled={props.isFollowingStatus.some(id => id === user.id)} onClick={() => {
                                         props.toggleUpdatingStatusUser(user.id, true);
-                                        followAPI.unfollow(user.id)
+                                        userAPI.unfollow(user.id)
                                             .then(responce => {
                                                 if (responce.data.resultCode === 0) {
                                                     props.unfollow(user.id)    
@@ -42,7 +42,7 @@ const Users = (props) => {
                                         className={style.friendButton}>Unfollow</button> 
                                     : <button disabled={props.isFollowingStatus.some(id => id === user.id)} onClick={() => {
                                         props.toggleUpdatingStatusUser(user.id, true);
-                                        followAPI.follow(user.id)
+                                        userAPI.follow(user.id)
                                             .then(responce => {
                                                 if (responce.data.resultCode === 0) {
                                                     props.follow(user.id)    
