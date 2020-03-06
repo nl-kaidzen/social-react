@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { 
-    follow, unfollow, 
     setCurrentPage, 
     toggleUpdatingStatusUser,
-    getUsers,
+    getUsers, followUser, unfollowUser
 } from './../../state/users-reducer.js';
 import Users from './Users.jsx';
 import Preloader from '../common/Preloader/Preloader.jsx';
@@ -35,15 +34,15 @@ class UsersAPI extends React.Component {
             {this.props.isFetching 
                 ? <Preloader />
                 : <Users 
-                    totalCount={this.props.totalCount}
-                    users={this.props.users}
-                    usersOnPage={this.props.usersOnPage}
-                    currentPage={this.props.currentPage}
-                    follow={this.props.follow}
-                    unfollow={this.props.unfollow}
-                    onPaginationButtonClick={this.onPaginationButtonClick}
-                    isFollowingStatus={this.props.isFollowingStatus}
-                    toggleUpdatingStatusUser={this.props.toggleUpdatingStatusUser}/>
+                    totalCount = {this.props.totalCount}
+                    users = {this.props.users}
+                    usersOnPage = {this.props.usersOnPage}
+                    currentPage = {this.props.currentPage}
+                    onPaginationButtonClick = {this.onPaginationButtonClick}
+                    isFollowingStatus = {this.props.isFollowingStatus}
+                    toggleUpdatingStatusUser = {this.props.toggleUpdatingStatusUser}
+                    followUser = {this.props.followUser}
+                    unfollowUser = {this.props.unfollowUser}/>
             }
         </>    
         );  
@@ -51,11 +50,11 @@ class UsersAPI extends React.Component {
 }
 
 const UsersContainer = connect(mapStateToProps, {
-    follow,
-    unfollow, 
     setCurrentPage,
     toggleUpdatingStatusUser,
     getUsers,
+    followUser,
+    unfollowUser
 })(UsersAPI);
 
 export default UsersContainer;

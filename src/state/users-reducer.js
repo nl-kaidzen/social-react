@@ -122,4 +122,28 @@ export const getUsers = (currentPage, usersOnPage) => {
     }
 }
 
+export const unfollowUser = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleUpdatingStatusUser(userId, true));
+        userAPI.unfollow(userId).then(responce => {
+            if (responce.data.resultCode === 0) {
+                dispatch(unfollow(userId));  
+            };
+            dispatch(toggleUpdatingStatusUser(userId, false));
+        });
+    }
+}
+
+export const followUser = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleUpdatingStatusUser(userId, true));
+        userAPI.follow(userId).then(responce => {
+            if (responce.data.resultCode === 0) {
+                dispatch(follow(userId));  
+            };
+            dispatch(toggleUpdatingStatusUser(userId, false));
+        });
+    }
+}
+
 export default usersReducer;

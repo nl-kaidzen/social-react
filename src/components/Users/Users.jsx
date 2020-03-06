@@ -1,6 +1,5 @@
 import React from 'react';
 import style from './Users.module.scss';
-import { userAPI } from './../../api/api'
 
 const Users = (props) => {
     let totalPages = Math.ceil(props.totalCount / props.usersOnPage);
@@ -29,27 +28,17 @@ const Users = (props) => {
                                     : "https://cs9.pikabu.ru/post_img/big/2017/04/12/5/1491981452114887277.jpg"} 
                                     alt="User avatar" width="100" height="100" />
                                 {user.followed
-                                    ? <button disabled={props.isFollowingStatus.some(id => id === user.id)} onClick={() => {
-                                        props.toggleUpdatingStatusUser(user.id, true);
-                                        userAPI.unfollow(user.id)
-                                            .then(responce => {
-                                                if (responce.data.resultCode === 0) {
-                                                    props.unfollow(user.id)    
-                                                }
-                                                props.toggleUpdatingStatusUser(user.id, false);
-                                            });
+                                    ? <button 
+                                        disabled={props.isFollowingStatus.some(id => id === user.id)} 
+                                        onClick={() => {
+                                            props.unfollowUser(user.id);
                                         }}
                                         className={style.friendButton}>Unfollow</button> 
-                                    : <button disabled={props.isFollowingStatus.some(id => id === user.id)} onClick={() => {
-                                        props.toggleUpdatingStatusUser(user.id, true);
-                                        userAPI.follow(user.id)
-                                            .then(responce => {
-                                                if (responce.data.resultCode === 0) {
-                                                    props.follow(user.id)    
-                                                }
-                                                props.toggleUpdatingStatusUser(user.id, false);
-                                            });
-                                    }}
+                                    : <button 
+                                        disabled={props.isFollowingStatus.some(id => id === user.id)} 
+                                        onClick={() => {
+                                            props.followUser(user.id);
+                                        }}
                                         className={style.friendButton}>Follow</button>}
                             </div>
                             <div className={style.userInfoWrapper}>
